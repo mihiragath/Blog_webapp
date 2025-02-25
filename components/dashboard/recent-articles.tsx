@@ -105,4 +105,4 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({ articleId }) => {
       </Button>
     </form>
   );
-};
+}; 
