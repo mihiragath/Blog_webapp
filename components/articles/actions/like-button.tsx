@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Bookmark, Share2, ThumbsUp } from "lucide-react";
 import React, { useOptimistic, useTransition } from "react";
-import { toggleLike } from "@/actions/like-toggle";
+import { likeDeslikeToggle } from "@/actions/like-deslike";
 import type { Like } from "@prisma/client";
 
 type LikeButtonProps = {
@@ -24,7 +24,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({
     
     startTransition(async () => {
       setOptimisticLikes(isLiked ? optimisticLikes - 1 : optimisticLikes + 1); // Optimistically update UI
-      await toggleLike(articleId);
+      await likeDeslikeToggle(articleId);
     });
   };
 
