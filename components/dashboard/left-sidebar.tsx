@@ -62,17 +62,19 @@ function DashboardSidebar({ closeSheet }: { closeSheet?: () => void }) {
             onClick={closeSheet}
           >
             <FileText className="mr-2 h-4 w-4" />
-            Articles
+            Articles  
           </Button>
         </Link>
-        <Button
-          variant="ghost"
-          className="w-full justify-start"
-          onClick={closeSheet}
-        >
-          <MessageCircle className="mr-2 h-4 w-4" />
-          Comments
-        </Button>
+          <Link href={`/dashboard/articleId`}>
+          <Button
+            variant="ghost"
+            className="w-full justify-start"
+            onClick={closeSheet}
+          >
+            <MessageCircle className="mr-2 h-4 w-4" />
+            Comments
+          </Button>
+          </Link>
         <Button
           variant="ghost"
           className="w-full justify-start"
