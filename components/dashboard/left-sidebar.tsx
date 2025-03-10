@@ -75,6 +75,7 @@ function DashboardSidebar({ closeSheet }: { closeSheet?: () => void }) {
             Comments
           </Button>
           </Link>
+          <Link href={"/"}>
         <Button
           variant="ghost"
           className="w-full justify-start"
@@ -83,6 +84,7 @@ function DashboardSidebar({ closeSheet }: { closeSheet?: () => void }) {
           <BarChart className="mr-2 h-4 w-4" />
           Analytics
         </Button>
+        </Link>
         <Button
           variant="ghost"
           className="w-full justify-start"
