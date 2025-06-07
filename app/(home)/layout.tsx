@@ -32,7 +32,7 @@
 
 // export default layout;
 import { Navbar } from '@/components/home/header/navbar'
-import React, { Children } from 'react'
+import React from 'react'
 
 const layout = async ({ children }: { children: React.ReactNode }) => {
   return (
