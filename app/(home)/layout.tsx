@@ -7,7 +7,7 @@
  
 //   const user = await currentUser();
 //   if (!user) {
-//     return null;
+//     return null;  
 //   }
 //   const loggedInUser = await prisma.user.findUnique({
 //     where: { clerkUserId: user.id },
@@ -31,3 +31,16 @@
 // };
 
 // export default layout;
+import { Navbar } from '@/components/home/header/navbar'
+import React, { Children } from 'react'
+
+const layout = async ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div>
+      <Navbar />
+      {children}
+    </div>
+  )
+}
+
+export default layout

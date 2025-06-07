@@ -1,12 +1,12 @@
-import { BlogDashboard } from '@/components/dashboard/blog-dashboard';
-import React from 'react';
+import { BlogDashboard } from '@/components/dashboard/blog-dashboard'
+import React from 'react'
 
-const BlogPage = () => {
+const page = () => {
   return (
     <div>
-      <BlogDashboard />
+        <BlogDashboard/>
     </div>
-  );
-};
+  )
+}
 
-export default BlogPage;
+export default page
