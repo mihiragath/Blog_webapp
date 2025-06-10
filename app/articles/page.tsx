@@ -59,7 +59,6 @@ const Page = async ({ searchParams }: SearchPageProps) => {
               </Button>
             </Link>
           ))}
-
           <Link href={`?search=${searchText}&page=${currentPage + 1}`}>
             <Button
               variant="ghost"
