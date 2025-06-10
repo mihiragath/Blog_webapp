@@ -11,9 +11,9 @@ type SearchPageProps = {
   searchParams: { search?: string; page?: string };
 };
 
-const ITEMS_PER_PAGE = 3; // Number of items per page
+const ITEMS_PER_PAGE = 3;
 
-const page: React.FC<SearchPageProps> = async ({ searchParams }) => {
+const Page = async ({ searchParams }: SearchPageProps) => {
   const searchText = searchParams.search || "";
   const currentPage = Number(searchParams.page) || 1;
   const skip = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -21,7 +21,6 @@ const page: React.FC<SearchPageProps> = async ({ searchParams }) => {
 
   const { articles, total } = await fetchArticleByQuery(searchText, skip, take);
   const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
- 
 
   return (
     <div className="min-h-screen bg-background">
@@ -31,37 +30,28 @@ const page: React.FC<SearchPageProps> = async ({ searchParams }) => {
           <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             All Articles
           </h1>
-          {/* Search Bar */}
           <Suspense>
             <ArticleSearchInput />
           </Suspense>
         </div>
-        {/* All article page  */}
-        <Suspense fallback={<AllArticlesPageSkeleton/>}>
-        <AllArticlesPage articles={articles} />
+
+        {/* All Articles */}
+        <Suspense fallback={<AllArticlesPageSkeleton />}>
+          <AllArticlesPage articles={articles} />
         </Suspense>
-        {/* <AllArticlesPageSkeleton/> */}
+
         {/* Pagination */}
         <div className="mt-12 flex justify-center gap-2">
-          {/* Prev Button */}
-          <Link
-            href={`?search=${searchText}&page=${currentPage - 1}`}
-            passHref
-          >
+          <Link href={`?search=${searchText}&page=${currentPage - 1}`}>
             <Button variant="ghost" size="sm" disabled={currentPage === 1}>
               ← Prev
             </Button>
           </Link>
 
-          {/* Page Numbers */}
           {Array.from({ length: totalPages }).map((_, index) => (
-            <Link
-              key={index}
-              href={`?search=${searchText}&page=${index + 1}`}
-              passHref
-            >
+            <Link key={index} href={`?search=${searchText}&page=${index + 1}`}>
               <Button
-                variant={`${currentPage === index + 1 ? 'destructive' : 'ghost'}`}
+                variant={currentPage === index + 1 ? "destructive" : "ghost"}
                 size="sm"
                 disabled={currentPage === index + 1}
               >
@@ -70,11 +60,7 @@ const page: React.FC<SearchPageProps> = async ({ searchParams }) => {
             </Link>
           ))}
 
-          {/* Next Button */}
-          <Link
-            href={`?search=${searchText}&page=${currentPage + 1}`}
-            passHref
-          >
+          <Link href={`?search=${searchText}&page=${currentPage + 1}`}>
             <Button
               variant="ghost"
               size="sm"
@@ -89,5 +75,4 @@ const page: React.FC<SearchPageProps> = async ({ searchParams }) => {
   );
 };
 
-export default page;
-
+export default Page;
